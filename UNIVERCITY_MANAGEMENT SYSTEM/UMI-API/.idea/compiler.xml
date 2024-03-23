@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="news" />
+        <module name="ecoledoctorale" />
+        <module name="module-service" />
+        <module name="researcher-service" />
+        <module name="filiere-service" />
+        <module name="discovery-service" />
+        <module name="formation-service (2)" />
+        <module name="eventRecherche" />
+        <module name="formation-service (1)" />
+        <module name="filiere" />
+        <module name="labo_team" />
+        <module name="semestre-service" />
+        <module name="gateway-service" />
+        <module name="planing-exam-service" />
+        <module name="student-service" />
+        <module name="Event" />
+        <module name="department" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="formation-service" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Event" options="-parameters" />
+      <module name="department" options="-parameters" />
+      <module name="discovery-service" options="-parameters" />
+      <module name="ecoledoctorale" options="-parameters" />
+      <module name="eventRecherche" options="-parameters" />
+      <module name="filiere" options="-parameters" />
+      <module name="filiere-service" options="-parameters" />
+      <module name="formation-service (1)" options="-parameters" />
+      <module name="formation-service (2)" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="labo_team" options="-parameters" />
+      <module name="module-service" options="-parameters" />
+      <module name="news" options="-parameters" />
+      <module name="planing-exam-service" options="-parameters" />
+      <module name="researcher-service" options="-parameters" />
+      <module name="semestre-service" options="-parameters" />
+      <module name="student-service" options="-parameters" />
+    </option>
+  </component>
+</project>

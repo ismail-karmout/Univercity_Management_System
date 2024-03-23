@@ -1,0 +1,167 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Filieres</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Filieres</li>
+        <li class="breadcrumb-item active">Edit</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Edit Filiere</h5>
+        <!-- Floating Labels Form -->
+        <form
+          (ngSubmit)="updateFiliere()"
+          class="row g-3"
+          #filiereForm="ngForm"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="filiereName"
+                [(ngModel)]="selectedFiliere.name"
+                required
+              />
+              <label for="Name">Name</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="number"
+                class="form-control"
+                id="nbAnnees"
+                name="nbAnnees"
+                placeholder="filiereNbAnnees"
+                [(ngModel)]="selectedFiliere.nbAnnees"
+                required
+              />
+
+              <label for="nbAnnees">nbAnnees</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="number"
+                class="form-control"
+                id="nbSemestres"
+                name="nbSemestres"
+                placeholder="filiereNbSemestres"
+                [(ngModel)]="selectedFiliere.nbSemestres"
+                required
+              />
+
+              <label for="nbSemestres">nbSemestres</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="responsable"
+                name="responsable"
+                placeholder="filiereResponsable"
+                [(ngModel)]="selectedFiliere.responsable"
+                required
+              />
+
+              <label for="responsable">Responsable</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="anneeDiplomante"
+                name="anneeDiplomante"
+                placeholder="filiereAnneeDiplomante"
+                [(ngModel)]="selectedFiliere.anneeDiplomante"
+                required
+              />
+
+              <label for="anneeDiplomante">Annee Diplomante</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="anneeNonDiplomante"
+                name="anneeNonDiplomante"
+                placeholder="anneeNonDiplomante"
+                [(ngModel)]="selectedFiliere.anneesNonDiplomantes"
+                required
+              />
+
+              <label for="anneeNonDiplomante">Annees Non Diplomantes</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="slug"
+                [(ngModel)]="selectedFiliere.slug"
+                required
+              />
+
+              <label for="slug">Slug</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="department"
+                name="department"
+                [(ngModel)]="selectedFiliere.department_id"
+              >
+                <option *ngFor="let depa of departments" [ngValue]="depa.id">
+                  {{ depa.id }}-{{ depa.name }}
+                </option>
+              </select>
+              <label for="department">Departement</label>
+            </div>
+          </div>
+
+          <div class="text-center d-flex justify-content-between">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="filiereForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="filiereForm.invalid"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

@@ -1,0 +1,63 @@
+<main  id="main" class="main"  >
+    <div class="pagetitle">
+      <h1>Annees Universitaires</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Annees Universitaires</li>
+          <li class="breadcrumb-item active">Index</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th><b>Id</b></th>
+                    <th><b>courante</b></th>
+                    <th><b>startYear</b></th>
+                    <th><b>endYear</b></th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Created at</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let annee of anneeUniversitaires">
+                    <td>{{ annee.id}}</td>
+                    <td>{{ annee.courante}}</td>
+                    <td>{{ annee.startYear}}</td>
+                    <td>{{ annee.endYear}}</td>
+                    <td>{{ annee.createdAt }}</td>
+                    <td class="d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-primary m-1"
+                        (click)="editAnneeUniversitaire(annee.id!)"
+                      >
+                      <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger m-1"
+                        (click)="deleteAnneeUniversitaire(annee.id!)"
+                      >
+                      <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

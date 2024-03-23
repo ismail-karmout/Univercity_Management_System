@@ -1,0 +1,69 @@
+<main  id="main" class="main"  >
+    <div class="pagetitle">
+      <h1>Semestres</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Semestres</li>
+          <li class="breadcrumb-item active">Index</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th><b>Id</b></th>
+                    <th><b>Name</b></th>
+                    <th><b>Academic Year</b></th>
+                    <th><b>Session</b></th>
+                    <th><b>Type Session</b></th>
+                    <th><b>Id Filiere</b></th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Created at</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Updated at</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let semestre of semestres">
+                    <td>{{ semestre.id}}</td>
+                    <td>{{ semestre.name}}</td>
+                    <td>{{ semestre.idAcademicYear}}</td>
+                    <td>{{ semestre.session}}</td>
+                    <td>{{ semestre.typeSession}}</td>
+                    <td>{{ semestre.idFiliere}}</td>
+                    <td>{{ semestre.createdAt }}</td>
+                    <td>{{ semestre.updatedAt }}</td>
+                    <td class="d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-primary m-1"
+                        (click)="editSemestre(semestre.id!)"
+                      >
+                      <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger m-1"
+                        (click)="deleteSemestre(semestre.id!)"
+                      >
+                      <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

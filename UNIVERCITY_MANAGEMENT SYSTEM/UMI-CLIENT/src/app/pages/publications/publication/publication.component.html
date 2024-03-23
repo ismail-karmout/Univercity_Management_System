@@ -1,0 +1,77 @@
+<main  id="main" class="main"  >
+    <div class="pagetitle">
+      <h1>Publications</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Publications</li>
+          <li class="breadcrumb-item active">Index</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th><b>Id</b></th>
+                    <th><b>Type</b></th>
+                    <th><b>Titre</b></th>
+                    <th><b>Auteur</b></th>
+                    <th><b>Annee Universitaire</b></th>
+                    <th><b>Equipe</b></th>
+                    <th><b>Laboratoire</b></th>
+                    <th><b>Etat</b></th>
+                    <th><b>Justificatif</b></th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Created at</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Updated at</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pub of publications">
+                    <td>{{ pub.id}}</td>
+                    <td>{{ pub.type}}</td>
+                    <td>{{ pub.titre}}</td>
+                    <td>{{ pub.auteurId}}</td>
+                    <td>{{ pub.anneeUniversitaireId}}</td>
+                    <td>{{pub.equipeId}}</td>
+                    <td>{{ pub.laboId}}</td>
+                    <td>{{ pub.etat}}</td>
+                    <td><a [href]="pub.justificatif" target="_blank">View Document</a></td>
+                    <td>{{ pub.createdAt }}</td>
+                    <td>{{ pub.updatedAt }}</td>
+                    <td class="d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-primary m-1"
+                        (click)="editPublication(pub.id!)"
+                      >
+                      <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger m-1"
+                        (click)="deletePublication(pub.id!)"
+                      >
+                      <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  
+
+

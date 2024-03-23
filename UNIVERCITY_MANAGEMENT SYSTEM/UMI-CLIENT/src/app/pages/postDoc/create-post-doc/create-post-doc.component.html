@@ -1,0 +1,62 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>PostDocs</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">PostDocs</li>
+          <li class="breadcrumb-item active">Create</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">PostDocs information</h5>
+          <!-- Floating Labels Form -->
+          <form
+            [formGroup]="postDocFormGroup" (ngSubmit)="handleCreatePostDoc()"           
+            class="row g-3"
+          >
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="PostDoc Name" class="form-control" id="PostDocName" formControlName="firstname" required>
+                <label for="PostDocName">Firstname</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PostDoc LastName" class="form-control" id="PostDocLastname" formControlName="lastname" required>
+                  <label for="PostDocLastname">Lastname</label>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PostDoc Email" class="form-control" id="PostDocEmail" formControlName="email" required>
+                  <label for="PostDocEmail">Email</label>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PostDoc Phone" class="form-control" id="PostDocPhone" formControlName="phone" required>
+                  <label for="PostDocPhone">Phone</label>
+                </div>
+              </div>
+            
+            
+            <div class="text-center d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary" [disabled]="!this.postDocFormGroup.valid">Submit</button>
+              <button type="reset" class="btn btn-secondary" (click)="handleCancel()">Reset</button>
+            </div>
+          </form>
+          <!-- End floating Labels Form -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

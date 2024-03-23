@@ -1,0 +1,186 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Event-Recherche</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Event-Recherche</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Event-Recherche Information</h5>
+
+        <form
+          (ngSubmit)="createEventr()"
+          class="row g-3"
+          #etablissementForm="ngForm"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="News Title"
+                [(ngModel)]="newEventr.intitule"
+                required
+              />
+              <label for="name">Intitule</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="News Type"
+                [(ngModel)]="newEventr.justificatif"
+                required
+              />
+              <label for="slug">Justificatif</label>
+            </div>
+          </div>
+          <br />
+
+          <div class="col-md-12">
+            <label for="slug">Type</label><br />
+            <div class="form-floating">
+              <select [(ngModel)]="newEventr.type" name="type" class="form-control">
+                <option value="COLOGUE">COLOGUE</option>
+                <option value="CONFERENCE">CONFERENCE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Etablissement Description"
+                id="description"
+                name="description"
+                style="height: 100px"
+                [(ngModel)]="newEventr.description"
+                required
+              ></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Etablissement Description"
+                id="description"
+                name="description"
+                style="height: 100px"
+                [(ngModel)]="newEventr.lieu"
+                required
+              ></textarea>
+              <label for="description">Lieu</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                [(ngModel)]="newEventr.date"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="file"
+                class="form-control"
+                id="slug"
+                name="slug"
+                (change)="onSelectFile($event)"
+                accept="image/*"
+                required
+              />
+              <!-- <img [src]="selectedImage" height="200" *ngIf="selectedImage"> -->
+              <label for="sluug">Photo</label>
+            </div>
+            <div class="mt-5">
+              <div class="row">
+                <mat-grid-list cols="4" rowHeight="1:1">
+                  <mat-grid-tile
+                    *ngFor="let file of newEventr.eventrImages; let i = index"
+                  >
+                    <div style="position: relative">
+                      <span class="btn-remove-image" (click)="removeImage(i)"
+                        >x</span
+                      >
+                      <img [src]="file.url" width="100px" height="100px" />
+                    </div>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="slug"
+                    name="slug"
+                    placeholder="Date"
+        
+                    [(ngModel)]="newEventr.date"
+                    required
+                  />
+                  <label for="sluug">Date</label>
+                </div>
+              </div> -->
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="department-id"
+                [(ngModel)]="newEventr.lab_id"
+                required
+              />
+              <label for="slug">lab-id</label>
+            </div>
+          </div>
+
+          <div class="text-center d-flex justify-content-between">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="etablissementForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

@@ -1,0 +1,150 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Labos</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Labos</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Labo information</h5>
+        <!-- Floating Labels Form -->
+        <form (ngSubmit)="createLabo()" class="row g-3" #laboForm="ngForm">
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                type="text"
+                class="form-control"
+                id="department_id"
+                name="department_id"
+                placeholder="Department Name"
+                [(ngModel)]="newLabo.department_id"
+                required
+              >
+                <option
+                  *ngFor="let department of departments"
+                  value="{{ department.id }}"
+                >
+                  {{ department.name }}
+                </option>
+              </select>
+              <label for="department_id">Department</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                type="text"
+                class="form-control"
+                id="ecole_doctorale_id"
+                name="ecole_doctorale_id"
+                placeholder="Ecole Doctorale Name"
+                [(ngModel)]="newLabo.ecole_doctorale_id"
+                required
+              >
+                <option
+                  *ngFor="let ecole of ecoleDoctorales"
+                  value="{{ ecole.id }}"
+                >
+                  {{ ecole.name }}
+                </option>
+              </select>
+              <label for="ecole_doctorale_id">Ecole Doctorale</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                placeholder="Labo Title"
+                [(ngModel)]="newLabo.title"
+                required
+              />
+              <label for="title">Title</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Labo Name"
+                [(ngModel)]="newLabo.acroname"
+                required
+              />
+              <label for="name">Name</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="Labo Slug"
+                [(ngModel)]="newLabo.slug"
+                required
+              />
+              <label for="slug">Slug</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label class="m-3" for="rechercheAxes">Recherche Axes</label>
+            <div
+              *ngFor="let axe of rechercheAxes; let i = index"
+              class="form-check"
+            >
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [id]="'rechercheAxe_' + axe.id"
+                [checked]="rechercheAxesSelection[i]"
+                (change)="updateRechercheAxes(i)"
+              />
+              <label [for]="'rechercheAxe_' + axe.id" class="form-check-label">
+                {{ axe.name }}
+              </label>
+            </div>
+          </div>
+
+          <div class="text-center d-flex justify-content-between">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="laboForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="laboForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

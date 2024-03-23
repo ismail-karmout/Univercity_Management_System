@@ -1,0 +1,89 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Modules</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Modules</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Modules information</h5>
+        <!-- Floating Labels Form -->
+        <form
+          [formGroup]="moduleFormGroup" (ngSubmit)="handleCreateModule()"           
+          class="row g-3"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="text" placeholder="Module Name" class="form-control" id="moduleName" formControlName="name" required>
+              <label for="moduleName">Name</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="Module Slug"
+                formControlName="slug"
+                required
+              />
+              <label for="slug">Slug</label>
+            </div>
+          </div>
+          <!-- <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-select" id="session" formControlName="selectedSession">
+                <option *ngFor="let session of getEnumKeys(sessionsEnum)" [value]="session.key">{{ session.value }}</option>
+              </select>
+              <label for="session">Session</label>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-select" id="session" formControlName="selectedTypeSession">
+                <option *ngFor="let typesession of getEnumKeys(typeSessionsEnum)" [value]="typesession.value">{{ typesession.value }}</option>
+              </select>
+              <label for="semestre">Type Session</label>
+            </div>
+          </div> -->
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-select" id="semestre" formControlName="semestreId">
+                <option *ngFor="let semestre of filteredSemestres" [value]="semestre.id">{{ semestre.name }}</option>
+              </select>
+              <label for="semestre">Semestre</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-select" id="professor" formControlName="professorId">
+                <option *ngFor="let professor of professors" [value]="professor.id">{{ professor.firstname+" "+professor.lastname }}</option>
+              </select>
+              <label for="professor">Professor</label>
+            </div>
+          </div>
+
+          <div class="text-center d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="!this.moduleFormGroup.valid">Submit</button>
+            <button type="reset" class="btn btn-secondary" (click)="handleCancel()">Reset</button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

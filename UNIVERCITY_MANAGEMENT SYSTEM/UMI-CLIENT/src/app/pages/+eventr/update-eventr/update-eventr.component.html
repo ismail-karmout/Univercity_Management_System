@@ -1,0 +1,143 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Event-Recherche</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">eventr</li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Edit Event-Recherche</h5>
+          <!-- Floating Labels Form -->
+          <form
+            (ngSubmit)="updateEventr()"
+            class="row g-3"
+            #departmentForm="ngForm"
+          >
+             
+  
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Department Name"
+                  [(ngModel)]="selectedEventr.intitule"
+                  required
+                />
+                <label for="title">Intitule</label>
+              </div>
+            </div>
+  
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="slug"
+                  name="slug"
+                  placeholder="News Type"
+                  [(ngModel)]="selectedEventr.justificatif"
+                  required
+                />
+                <label for="slug">Justificatif</label>
+              </div>
+              
+            </div>
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea
+                  class="form-control"
+                  placeholder="News Description"
+                  id="description"
+                  name="description"
+                  style="height: 100px"
+                  [(ngModel)]="selectedEventr.description"
+                  required
+                ></textarea>
+                <label for="description">Description</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="slug"
+                    name="slug"
+                    placeholder="Lieu"
+                    [(ngModel)]="selectedEventr.lieu"
+                    required
+                  />
+                  <label for="slug">Lieu</label>
+                </div>
+                
+            </div>
+            <!-- <div class="col-md-12">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="slug"
+                    name="slug"
+                    placeholder="Image"
+                    [(ngModel)]="selectedEventr.image"
+                    required
+                  />
+                  <label for="slug">Image</label>
+                </div>
+                
+            </div> -->
+
+            <div class="col-md-12">
+              <label for="slug">Type</label><br>
+              <div class="form-floating">
+                <select  [(ngModel)]="selectedEventr.type"  name="type">
+                  
+                  <option value="COLOGUE">COLOGUE</option>
+                  <option value="CONFERENCE">CONFERENCE</option>
+                </select>
+                
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                 <input type="date" class="form-control" id="date" name="date" [(ngModel)]="selectedEventr.date" required>
+              </div>
+             </div>
+
+
+            <div class="text-center d-flex justify-content-between">
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                (click)="departmentForm.reset()"
+              >
+                Reset
+              </button>
+  
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="departmentForm.invalid"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+          <!-- End floating Labels Form -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

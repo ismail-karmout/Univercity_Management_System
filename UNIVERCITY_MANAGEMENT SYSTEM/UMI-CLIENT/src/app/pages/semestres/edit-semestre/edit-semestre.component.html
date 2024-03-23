@@ -1,0 +1,106 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Semestres</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Semestres</li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Edit Semestre</h5>
+          <!-- Floating Labels Form -->
+          <form
+            (ngSubmit)="updateSmestre()"
+            class="row g-3"
+            #semestreForm="ngForm"
+          >
+            <div class="col-md-12">
+              <div class="form-floating">
+                <select
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="SemestreName"
+                  [(ngModel)]="selectedSemestre.name"
+                  required (change)="onSemestreChange()"
+                >
+                <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                    <option value="S4">S4</option>
+                    <option value="S5">S5</option>
+                    <option value="S6">S6</option>
+                  </select>  
+                  <label for="Name">Name</label>
+              </div>
+            </div>
+             
+            <div class="col-md-12">
+                <div class="form-floating">
+                  <select class="form-control" id="academicYear" name="academicYear" [(ngModel)]="selectedSemestre.idAcademicYear">
+                    <option *ngFor="let annee of anneesUniversitaires" [ngValue]="annee.id">{{ annee.startYear }}-{{ annee.endYear }}</option>
+                  </select>
+                  <label for="academicYear">Academic Year</label>
+                </div>
+              </div>
+            
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <select class="form-control" id="session" name="session" [(ngModel)]="selectedSemestre.session" required>
+                    <option value="Automne">Automne</option>
+                    <option value="Printemps">Printemps</option>
+                  </select>
+                  <label for="session">Session</label>
+                </div>
+              </div>
+  
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <select class="form-control" id="typeSession" name="typeSession" [(ngModel)]="selectedSemestre.typeSession" required>
+                    <option value="Ratt">Ratt</option>
+                    <option value="Normal">Normal</option>
+                  </select>
+                  <label for="typeSession">Type Session</label>
+                </div>
+              </div>
+  
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <select class="form-control" id="idFiliere" name="idFiliere" [(ngModel)]="selectedSemestre.idFiliere">
+                    <option *ngFor="let filiere of filieres" [value]="filiere.id">{{ filiere.name }}</option>
+                  </select>
+                  <label for="idFiliere">Filière</label>
+                </div>
+              </div>
+            <div class="text-center d-flex justify-content-between">
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                (click)="semestreForm.reset()"
+              >
+                Reset
+              </button>
+  
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="semestreForm.invalid"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+          <!-- End floating Labels Form -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

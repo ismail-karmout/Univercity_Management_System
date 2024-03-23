@@ -1,0 +1,96 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Groups</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Groups</li>
+        <li class="breadcrumb-item active">Edit</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Group information</h5>
+        <!-- Floating Labels Form -->
+        <form
+          (ngSubmit)="updateGroup()"
+          class="row g-3"
+          #editgroupForm="ngForm"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                type="text"
+                class="form-control"
+                id="section_id"
+                name="section_id"
+                placeholder="Section Name"
+                [(ngModel)]="selectedGroup.section.id"
+                required
+              >
+                <option
+                  *ngFor="let section of sections"
+                  value="{{ section.id }}"
+                >
+                  {{ section.name }}
+                </option>
+              </select>
+              <label for="section_id">Section</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Group Name"
+                [(ngModel)]="selectedGroup.name"
+                required
+              />
+              <label for="name">Name</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="description"
+                placeholder="Group Description"
+                [(ngModel)]="selectedGroup.description"
+                required
+              />
+              <label for="name">Description</label>
+            </div>
+          </div>
+          <div class="text-center d-flex justify-content-between">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="editgroupForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="editgroupForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

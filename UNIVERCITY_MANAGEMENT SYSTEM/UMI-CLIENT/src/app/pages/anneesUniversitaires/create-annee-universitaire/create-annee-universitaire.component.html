@@ -1,0 +1,81 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Annees Universitaires</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Annees Universitaires</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Annee Universitaire informations</h5>
+        <!-- Floating Labels Form -->
+        <form
+          (ngSubmit)="createAnneeUniversitaire()"
+          class="row g-3"
+          #anneeUniversitaireForm="ngForm"
+        >
+          <!-- <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="anneeUniversitaire_id"
+                name="anneeUniversitaire_id"
+                [(ngModel)]="newAnneeUniversitaire.id"
+                required
+              >
+                <option *ngFor="let annee of anneesUniversitaires" [value]="annee.id">
+              
+                </option>
+              </select>
+              <label for="anneeUniversitaire_id">Annee Universitaire</label>
+            </div>
+          </div> -->
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-control" id="courante" name="courante" [(ngModel)]="newAnneeUniversitaire.courante" required>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <label for="courante">Courante</label>
+            </div>
+          </div>
+          
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="startYear" name="startYear" placeholder="Annee Universitaire StartYear"
+                [(ngModel)]="newAnneeUniversitaire.startYear" required (ngModelChange)="updateEndYear()" />
+              <label for="startYear">StartYear</label>
+            </div>
+          </div>
+          
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="endYear" name="endYear" placeholder="Annee Universitaire EndYear"
+                [(ngModel)]="newAnneeUniversitaire.endYear" required />
+              <label for="endYear">EndYear</label>
+            </div>
+          </div>
+          
+          
+          <div class="text-center d-flex justify-content-between col-md-12">
+            <button type="reset" class="btn btn-secondary" (click)="anneeUniversitaireForm.reset()">
+              Reset
+            </button>
+
+            <button type="submit" class="btn btn-primary" (click)= traitement()>
+              Submit
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

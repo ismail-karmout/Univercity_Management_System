@@ -1,0 +1,68 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Students</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Students</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Students information</h5>
+        <!-- Floating Labels Form -->
+        <form
+          [formGroup]="studentFormGroup" (ngSubmit)="handleCreateStudent()"           
+          class="row g-3"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="text" placeholder="student Name" class="form-control" id="studentName" formControlName="firstname" required>
+              <label for="studentName">Firstname</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="Student LastName" class="form-control" id="studentLastname" formControlName="lastname" required>
+                <label for="studentLastname">Lastname</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="Student Email" class="form-control" id="studentEmail" formControlName="email" required>
+                <label for="studentEmail">Email</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="Student Cne" class="form-control" id="studentCne" formControlName="cne" required>
+                <label for="studentCne">Cne</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="Student Cni" class="form-control" id="studentCni" formControlName="cni" required>
+                <label for="studentCni">Cni</label>
+              </div>
+            </div>
+          
+          
+          <div class="text-center d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="!this.studentFormGroup.valid">Submit</button>
+            <button type="reset" class="btn btn-secondary" (click)="handleCancel()">Reset</button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

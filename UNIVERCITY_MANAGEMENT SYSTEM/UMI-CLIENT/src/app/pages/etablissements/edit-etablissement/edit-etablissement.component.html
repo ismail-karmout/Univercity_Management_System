@@ -1,0 +1,89 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Etablissements</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Etablissements</li>
+        <li class="breadcrumb-item active">Edit</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Edit Etablissement</h5>
+        <!-- Floating Labels Form -->
+        <form
+          (ngSubmit)="updateEtablissement()"
+          class="row g-3"
+          #etablissementForm="ngForm"
+        >
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Etablissement Name"
+                [(ngModel)]="selectedEtablissement.name"
+                required
+              />
+              <label for="name">Name</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="slug"
+                name="slug"
+                placeholder="Etablissement Slug"
+                [(ngModel)]="selectedEtablissement.slug"
+                required
+              />
+              <label for="slug">Slug</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Etablissement Description"
+                id="description"
+                name="description"
+                style="height: 100px"
+                [(ngModel)]="selectedEtablissement.description"
+                required
+              ></textarea>
+              <label for="description"></label>
+            </div>
+          </div>
+          <div class="text-center d-flex justify-content-between">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="etablissementForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="etablissementForm.invalid"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

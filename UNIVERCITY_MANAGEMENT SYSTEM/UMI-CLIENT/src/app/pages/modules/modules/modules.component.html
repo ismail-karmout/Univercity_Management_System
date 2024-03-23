@@ -1,0 +1,93 @@
+<main id="main" class="main">
+  <div class="pagetitle d-flex justify-content-between">
+    <div>
+      <h1>Modules</h1>
+
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Modules</li>
+          <li class="breadcrumb-item active">Index</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="top-btn">
+      <a routerLink="/modules/create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i>
+        Add Module
+      </a>
+    </div>
+
+    </div>
+    
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <table class="table datatable">
+              <thead>
+                <tr>
+                  <th>
+                    <b>I</b>d
+                  </th>
+                  <th>University Year</th>
+                  <th>Semester</th>
+                  <th>Name</th>
+                  <th>Slug</th>
+                  <th>Module Elements</th>
+                  <th>Professor</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let module of modules">
+                  <td>{{ module.id }}</td>
+                  <td>
+                    @if(module.semestre != null){
+                    {{ module.semestre.academicYear.startYear+"-"+module.semestre.academicYear.endYear }}
+                    }</td>
+                  <td>
+                    @if(module.semestre != null){
+                    {{ module.semestre.name }}
+                    }</td>
+                  <td>{{ module.name }}</td>
+                  <td>{{ module.slug }}</td>
+                  <td class="row gap-2 justify-content-center">
+                    @for (moduleElement of module.moduleElements; track $index) {
+                      <span class=" col-9 badge text-bg-secondary">{{ moduleElement.name }} </span>
+                    }  
+                  </td>
+                  <td>
+                    @if(module.professor != null){
+                      {{ module.professor.firstname+" "+module.professor.lastname }}
+                    }
+                    </td>
+                  <td class="justify-content-between">
+                    <button
+                      type="button" 
+                      class="btn btn-primary"
+                      (click)="handleEditModule(module)"
+                    >
+                    <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="handleDeleteModule(module.id)"
+                    >
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

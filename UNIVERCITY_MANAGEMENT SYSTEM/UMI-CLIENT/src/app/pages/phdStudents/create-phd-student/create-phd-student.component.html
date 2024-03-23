@@ -1,0 +1,62 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>PhdStudents</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">PhdStudents</li>
+          <li class="breadcrumb-item active">Create</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">PhdStudents information</h5>
+          <!-- Floating Labels Form -->
+          <form
+            [formGroup]="phdStudentFormGroup" (ngSubmit)="handleCreatePhdStudent()"           
+            class="row g-3"
+          >
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" placeholder="PhdStudent Name" class="form-control" id="PhdStudentName" formControlName="firstname" required>
+                <label for="PhdStudentName">Firstname</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PhdStudent LastName" class="form-control" id="PhdStudentLastname" formControlName="lastname" required>
+                  <label for="PhdStudentLastname">Lastname</label>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PhdStudent Email" class="form-control" id="PhdStudentEmail" formControlName="email" required>
+                  <label for="PhdStudentEmail">Email</label>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" placeholder="PhdStudent Phone" class="form-control" id="PhdStudentPhone" formControlName="phone" required>
+                  <label for="PhdStudentPhone">Phone</label>
+                </div>
+              </div>
+            
+            
+            <div class="text-center d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary" [disabled]="!this.phdStudentFormGroup.valid">Submit</button>
+              <button type="reset" class="btn btn-secondary" (click)="handleCancel()">Reset</button>
+            </div>
+          </form>
+          <!-- End floating Labels Form -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

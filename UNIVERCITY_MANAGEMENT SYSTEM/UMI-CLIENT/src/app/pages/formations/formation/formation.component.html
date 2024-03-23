@@ -1,0 +1,68 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Formations</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Formations</li>
+          <li class="breadcrumb-item active">Index</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th><b>Id</b></th>
+                    <th><b>Intitule</b></th>
+                    <th><b>TypeFormation</b></th>
+                    <th><b>Responsable</b></th>
+                    <th><b>Image Descriptive</b></th>
+                    <th><b>Document Descriptif</b></th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Created at</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Updated at</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let formation of formations">
+                    <td>{{ formation.id}}</td>
+                    <td>{{ formation.intitule}}</td>
+                    <td>{{ formation.typeFormation}}</td>
+                    <td>{{ formation.responsable}}</td>
+                    <!-- <td><img [src]="getBase64Image(formation.imageDescriptive)" alt="Formation Image" height="100"></td> -->
+                    <td><a [href]="formation.documentDescriptifPath" target="_blank">View Document</a></td>
+                    <td>{{ formation.createdAt }}</td>
+                    <td>{{ formation.updatedAt }}</td>
+                    <td class="d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-primary m-1"
+                        (click)="editFormation(formation.id!)"
+                      >
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger m-1"
+                        (click)="deleteFormation(formation.id!)"
+                      >
+                        <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

@@ -1,0 +1,621 @@
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <!-- End Dashboard Nav -->
+
+    <li class="nav-item" [class.active]="activeNavItem === 'etablissements'">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#etablissements-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-city"></i><span>Etablissements</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="etablissements-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="etablissements">
+            <i class="bi bi-circle"></i><span>All etablissements</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="etablissements/create">
+            <i class="bi bi-circle"></i><span>Create etablissement</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#departments-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-building"></i><span>Departments</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="departments-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="departments">
+            <i class="bi bi-circle"></i><span>All Departments</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="departments/create">
+            <i class="bi bi-circle"></i><span>Create Department</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#annee-universitaire-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-calendar-days"></i><span>Annee Universitaire</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="annee-universitaire-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="annee-universitaire">
+            <i class="bi bi-circle"></i><span>All Annees universitaires</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="annee-universitaire/create">
+            <i class="bi bi-circle"></i><span>Create Annee Universitaire</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#filiere-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-signs-post"></i><span>Filieres</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="filiere-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="filiere">
+            <i class="bi bi-circle"></i><span>All Filieres</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="filiere/create">
+            <i class="bi bi-circle"></i><span>Create Filiere</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#semestre-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-hourglass-half"></i><span>Semestre</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="semestre-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="semestre">
+            <i class="bi bi-circle"></i><span>All Semestres</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="semestre/create">
+            <i class="bi bi-circle"></i><span>Create Semestre</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#sections-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-users-between-lines"></i><span>Sections</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="sections-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="sections">
+            <i class="bi bi-circle"></i><span>All Sections</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="sections/create">
+            <i class="bi bi-circle"></i><span>Create Sections</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#groupes-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-user-group"></i><span>Groups</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="groupes-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="groups">
+            <i class="bi bi-circle"></i><span>All Groups</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="groups/create">
+            <i class="bi bi-circle"></i><span>Create Group</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#schedules-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-calendar-days"></i><span>Schedules</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="schedules-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="schedules">
+            <i class="bi bi-circle"></i><span>All Schedules</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="schedules/create">
+            <i class="bi bi-circle"></i><span>Create Schedules</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#formation-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-chalkboard-user"></i><span>Formation</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="formation-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="formation">
+            <i class="bi bi-circle"></i><span>All Formations</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="formation/create">
+            <i class="bi bi-circle"></i><span>Create Formation</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#ecoles-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-school"></i><span>Ecole Doctorale</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="ecoles-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="ecole-doctorales">
+            <i class="bi bi-circle"></i><span>All Ecoles</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="ecole-doctorales/create">
+            <i class="bi bi-circle"></i><span>Create Ecole</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#labos-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-flask-vial"></i><span>Labos</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="labos-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="labos">
+            <i class="bi bi-circle"></i><span>All Labos</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="labos/create">
+            <i class="bi bi-circle"></i><span>Create Labo</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#teams-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-users"></i><span>Teams</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="teams-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="teams">
+            <i class="bi bi-circle"></i><span>All Teams</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="teams/create">
+            <i class="bi bi-circle"></i><span>Create Team</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#recherche-axes-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-tags"></i><span>Recherche Axes</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="recherche-axes-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="recherche-axes">
+            <i class="bi bi-circle"></i><span>All Axes</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="recherche-axes/create">
+            <i class="bi bi-circle"></i><span>Create Axe</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#news-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-newspaper"></i><span>News</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="news-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="news/get">
+            <i class="bi bi-circle"></i><span>All News</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="news/create">
+            <i class="bi bi-circle"></i><span>Create News</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#event-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-calendar-plus"></i><span>Event-Recherche</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="event-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="eventr/get">
+            <i class="bi bi-circle"></i><span>All Event-Recherche</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="eventr/create">
+            <i class="bi bi-circle"></i><span>Create Event-Recherche</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#professors-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-user-tie"></i><span>Professors</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="professors-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="professors">
+            <i class="bi bi-circle"></i><span>All Professors</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="professors/create">
+            <i class="bi bi-circle"></i><span>Create Professor</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#postDocs-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-compass"></i><span>PostDocs</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="postDocs-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="postDocs">
+            <i class="bi bi-circle"></i><span>All PostDocs</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="postDocs/create">
+            <i class="bi bi-circle"></i><span>Create PostDoc</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#phdStudents-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-graduation-cap"></i><span>PhdStudents</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="phdStudents-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="phdStudents">
+            <i class="bi bi-circle"></i><span>All PhdStudents</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="phdStudents/create">
+            <i class="bi bi-circle"></i><span>Create PhdStudent</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#students-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-users"></i><span>Students</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="students-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="students">
+            <i class="bi bi-circle"></i><span>All Students</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="students/create">
+            <i class="bi bi-circle"></i><span>Create Student</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#modules-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-book"></i><span>Modules</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="modules-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="modules">
+            <i class="bi bi-circle"></i><span>All Modules</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="modules/create">
+            <i class="bi bi-circle"></i><span>Create Module</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#planing-exams-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-file"></i><span>Planing Exams</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="planing-exams-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="planingExams">
+            <i class="bi bi-circle"></i><span>All Planing Exams</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="planingExams/create">
+            <i class="bi bi-circle"></i><span>Create Planing Exam</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#publications-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="fa-solid fa-list"></i><span>Publications</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="publications-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="publications">
+            <i class="bi bi-circle"></i><span>All Publications</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="publications/create">
+            <i class="bi bi-circle"></i><span>Create Publication</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+  </ul>
+</aside>

@@ -1,0 +1,239 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.4
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: umi
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - umi-network
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  discovery-service:
+    build:
+      context: ./registry
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - umi-network
+
+  gateway-service:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    environment:
+      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+    depends_on:
+      - discovery-service
+    networks:
+      - umi-network
+
+#  labo-team-axes:
+#    build:
+#      context: ./labo-team-axes
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#
+#    networks:
+#      - umi-network
+
+#  department-event:
+#    build:
+#      context: ./department-event
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+
+#  department-etablissement:
+#    build:
+#      context: ./department
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    ports:
+#      - '9005:9005'
+#    expose:
+#      - '9005'
+#    depends_on:
+#      - db
+#      - discovery-service
+#
+#    networks:
+#      - umi-network
+
+#  ecole-doctorale:
+#    build:
+#      context: ./ecole-doctorale
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#
+#    networks:
+#      - umi-network
+#
+#  filier:
+#    build:
+#      context: ./filier
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+#  formation:
+#    build:
+#      context: ./formation
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+#  group-section:
+#    build:
+#      context: ./group-section
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+  student-service:
+    build:
+      context: ./student
+      dockerfile: Dockerfile
+    environment:
+      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+      - discovery-service
+    networks:
+      - umi-network
+#
+#  module-service:
+#    build:
+#      context: ./module
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+#  recherche-event:
+#    build:
+#      context: ./recherche-event
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+#  researcher-service:
+#    build:
+#      context: ./researcher
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+#
+#  semestre:
+#    build:
+#      context: ./semestre
+#      dockerfile: Dockerfile
+#    environment:
+#      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/umi?autoReconnect=true
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#    depends_on:
+#      - db
+#      - discovery-service
+#    networks:
+#      - umi-network
+
+networks:
+  umi-network:
+    driver: bridge

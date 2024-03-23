@@ -1,0 +1,63 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Planing Exams</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Planing Exams</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Planing Exams information</h5>
+        <!-- Floating Labels Form -->
+        <form [formGroup]="planingExamFormGroup" (ngSubmit)="handleCreatePlaningExam()" class="row g-3">
+          <div class="col-md-12">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Avis planing Exam" id="floatingTextarea2"
+                formControlName="avis" style="height: 100px" required></textarea>
+              <label for="floatingTextarea2">Avis</label>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select class="form-select" id="semestre" formControlName="semestreId">
+                <option *ngFor="let semestre of semestres" [value]="semestre.id">{{ semestre.name+" "+semestre.session+" "+semestre.typeSession }}</option>
+              </select>
+              <label for="semestre">Semestre</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-check" *ngFor="let exam of exams">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" [value]="exam.id">
+                {{ exam.name }}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <div class="input-group">
+                <input type="file" (change)="onFileSelected($event)" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="!planingExamFormGroup.valid">Submit</button>
+            <button type="reset" class="btn btn-secondary" (click)="handleCancel()">Reset</button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,94 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Annees Universitaires</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">UMI</a></li>
+          <li class="breadcrumb-item">Annees Universitaires</li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Edit Annee Universitaire</h5>
+          <!-- Floating Labels Form -->
+          <form
+            (ngSubmit)="updateAnneeUniversitaire()"
+            class="row g-3"
+            #anneeUniversitaireForm="ngForm"
+          >
+            <div class="col-md-12">
+              <div class="form-floating">
+               
+                <select
+                  type="text"
+                  class="form-control"
+                  id="courante"
+                  name="courante"
+                  placeholder="Annee Universitaire Courante"
+                  [(ngModel)]="selectedAnneeUniversitaire.courante"
+                  required
+                >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+                <label for="courante">Courante</label>
+              </div>
+            </div>
+  
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="startYear"
+                  name="startYear"
+                  placeholder="Annee Universitaire startYear"
+                  [(ngModel)]="selectedAnneeUniversitaire.startYear"
+                  required
+                />
+                <label for="startYear">startYear</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="endYear"
+                  name="endYear"
+                  placeholder="Annee Universitaire endYear"
+                  [(ngModel)]="selectedAnneeUniversitaire.endYear"
+                  required
+                />
+                <label for="endYear">endYear</label>
+              </div>
+            </div>
+            <div class="text-center d-flex justify-content-between">
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                (click)="anneeUniversitaireForm.reset()"
+              >
+                Reset
+              </button>
+  
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="anneeUniversitaireForm.invalid"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+          <!-- End floating Labels Form -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  

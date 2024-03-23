@@ -1,0 +1,177 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Publications</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">UMI</a></li>
+        <li class="breadcrumb-item">Publications</li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Publication informations</h5>
+        <!-- Floating Labels Form -->
+        <form
+          (ngSubmit)="createPublication()"
+          class="row g-3"
+          #publicationForm="ngForm"
+        >
+          <!-- <div class="col-md-12">
+              <div class="form-floating">
+                <select
+                  class="form-control"
+                  id=" id"
+                  name=" id"
+                  [(ngModel)]="newPublication.id"
+                  required
+                >
+                  <option *ngFor="let pub of publications" [value]="pub.id">
+                  </option>
+                </select>
+                <label for=" id">Publication</label>
+              </div>
+            </div> -->
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="type"
+                name="type"
+                [(ngModel)]="newPublication.type"
+                required
+              />
+
+              <label for="type">Type</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="titre"
+                name="titre"
+                [(ngModel)]="newPublication.titre"
+                required
+              />
+
+              <label for="titre">Titre</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="prof"
+                name="prof"
+                [(ngModel)]="selectedProfId"
+              >
+                <option *ngFor="let prof of profs" [ngValue]="prof.id">
+                  {{ prof.id }}/{{ prof.firstname }}-{{ prof.lastname }}
+                </option>
+              </select>
+              <label for="prof">Auteur</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="annee"
+                name="annee"
+                [(ngModel)]="selectedAnneeId"
+              >
+                <option *ngFor="let annee of annees" [ngValue]="annee.id">
+                  {{ annee.id }}/{{ annee.startYear }}-{{ annee.endYear }}
+                </option>
+              </select>
+              <label for="annee">Annee Universitaire</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="team"
+                name="team"
+                [(ngModel)]="selectedTeamId"
+              >
+                <option *ngFor="let team of teams" [ngValue]="team.id">
+                  {{ team.id }}/{{ team.title }}
+                </option>
+              </select>
+              <label for="team">Equipe</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <select
+                class="form-control"
+                id="labo"
+                name="labo"
+                [(ngModel)]="selectedLaboId"
+              >
+                <option *ngFor="let labo of labos" [ngValue]="labo.id">
+                  {{ labo.id }}/{{ labo.acroname }}
+                </option>
+              </select>
+              <label for="labo">Laboratoire</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="etat"
+                name="etat"
+                [(ngModel)]="newPublication.etat"
+                required
+              />
+
+              <label for="etat">Etat</label>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="justificatif">justificatif</label>
+                          <input
+                            type="file"
+                            class="form-control-file"
+                            id="justificatif"
+                            name="justificatif"
+                            (change)="onDocumentSelected($event)"
+                            accept=".pdf"
+                          />
+                        </div>
+                      </div> -->
+
+          <div class="text-center d-flex justify-content-between col-md-12">
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="publicationForm.reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="createPublication()"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <!-- End floating Labels Form -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->
